@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <form action="/login" target="_self" method="post">
+    <input type="text" name="email_or_mobile" />
+    <input type="password" name="password" />
+    <button type="submit">提交</button>
+  </form>
+<!-- action 向何处发送表单，未指定默认是当前页面url地址 ,提交后就会跳转到指向的url地址-->
+<!-- target 在何处打开新url，可以是_blank新窗口，_self默认得相同框架， -->
+<!-- method可选get和post，默认get -->
+<!-- enctype 对数据进行编码，文件上传必须用multipart/form-data,默认为application/x-www-form-urlencoded -->
+</body>
+
+</html>

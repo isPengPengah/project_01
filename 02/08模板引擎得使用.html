@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/template-web.js"></script>
+    <script src="./lib/jquery.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <!-- 定义模板 -->
+    <!-- 模板的html结构，必须放在script中 -->
+    <script type="text/html" id="tpl-user">
+        <!-- 把script里的标签当成html结构 -->
+        <!-- 双括号代表占位符 -->
+        <h1>{{name}} ------ {{age}}</h1>
+        {{@ test}}
+        <div>
+            {{if flag==0}}
+            flag的值是0
+            {{else if flag==1}}
+            flag的值是1
+            {{/if}}
+        </div>
+        <ul>
+            {{each hobby}}
+            <li>索引是：{{$index}},循环项是：{{$value}}</li>
+            {{/each}}
+        </ul>
+        <h3>{{regTime | dateFormat}}</h3>
+
+    </script>
+    <script>
+        //定义处理时间的过滤器
+        template.defaults.imports.dateFormat=function(date){
+            var y=date.getFullYear()
+            var m=date.getMonth()+1
+            var d=date.getDate()
+            return y+'-'+m+'-'+d
+        }
+        //需要渲染得数据
+        var data={name:'zs',age:20,test:'<h3>test</h3>',flag:1,
+            hobby:['吃饭','睡觉','写代码'],regTime:new Date()
+        }
+        //调用template函数
+        var htmlstr=template('tpl-user',data)
+        console.log(htmlstr);
+        //渲染html结构
+        $('#container').html(htmlstr)
+    </script>
+</body>
+</html>
